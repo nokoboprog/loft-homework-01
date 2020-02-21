@@ -8,6 +8,7 @@ $age = 41;
 echo "Меня зовут: $name.<br>";
 echo "Мне $age год.<br>";
 echo "\"!|\\/'\"\\<br>";
+echo '<br>';
 
 //Задание #2
 
@@ -16,7 +17,7 @@ const IMG_BY_MARKERS = 23;
 const IMG_BY_PENCILS = 40;
 const IMG_BY_PAINTS = IMG_ALL - IMG_BY_MARKERS - IMG_BY_PENCILS;
 
-echo '<br>Дана задача: ';
+echo 'Дана задача: ';
 echo 'На школьной выставке <b>' . IMG_ALL . '</b> рисунков. <b>' . IMG_BY_MARKERS;
 echo '</b> из них выполнены <b>фломастерами, ' . IMG_BY_PENCILS . ' карандашами</b>, ';
 echo 'а остальные — <b>красками</b>. Сколько рисунков, выполненные красками, на школьной выставке?<br>';
@@ -29,14 +30,14 @@ echo '<br>';
 
 $age = mt_rand(-100, 100);
 
-if (18 <= $age && $age <= 65) {
+if ($age >= 18 && $age <= 65) {
     echo 'Вам еще работать и работать.';
-} elseif (65 < $age) {
+} elseif ($age > 65) {
     echo 'Вам пора на пенсию.';
-} elseif (1 <= $age && $age <= 17) {
+} elseif ($age >= 1 && $age <= 17) {
     echo 'Вам ещё рано работать.';
 } else {
-    echo 'Неизвестный возраст';
+    echo 'Неизвестный возраст.';
 }
 echo '<br><br>';
 
@@ -66,30 +67,30 @@ echo '<br><br>';
 $bmw = ['model' => 'X5', 'speed' => 120, 'doors' => 5, 'year' => 2015];
 $toyota = ['model' => 'Mark-2', 'speed' => 130, 'doors' => 3, 'year' => 2010];
 $opel = ['model' => 'Vectra', 'speed' => 110, 'doors' => 5, 'year' => 2008];
-$total_cars = ['BMW' => $bmw, 'Toyota' => $toyota, 'Opel' => $opel];
+$totalCars = ['BMW' => $bmw, 'Toyota' => $toyota, 'Opel' => $opel];
 
-foreach ($total_cars as $key => $value) {
-    echo "CAR $key<br>";
-    foreach ($value as $v) {
-        echo "$v ";
-    }
-    echo '<br>';
+foreach ($totalCars as $carBrand => $car) {
+    echo "CAR $carBrand<br>";
+    echo implode(' ', $car) . '<br>';
 }
 echo '<br><br>';
 
 //Задание #6
 
-echo '<table style="border: 1px solid #000">';
-for ($i = 1; $i <= 10; $i++) {
+const ROWS = 10;
+const COLS = 10;
+
+echo "<table style='border: 1px solid #000; text-align: center'>";
+for ($tr = 1; $tr <= ROWS; $tr++) {
     echo '<tr>';
-    for ($j = 1; $j <= 10; $j++) {
-        $sum = $i * $j;
-        if ($i % 2 === 0 && $j % 2 === 0) {
-            echo "<td style='border: 1px solid #000; text-align: center'>($sum)</td>";
-        } elseif ($i % 2 === 1 && $j % 2 === 1) {
-            echo "<td style='border: 1px solid #000; text-align: center'>[$sum]</td>";
+    for ($td = 1; $td <= COLS; $td++) {
+        $sum = $tr * $td;
+        if ($tr % 2 == 0 && $td % 2 == 0) {
+            echo "<td style='border: 1px solid #000'>($sum)</td>";
+        } elseif ($tr % 2 == 1 && $td % 2 == 1) {
+            echo "<td style='border: 1px solid #000'>[$sum]</td>";
         } else {
-            echo "<td style='border: 1px solid #000; text-align: center'>$sum</td>";
+            echo "<td style='border: 1px solid #000'>$sum</td>";
         }
     }
     echo '</tr>';
